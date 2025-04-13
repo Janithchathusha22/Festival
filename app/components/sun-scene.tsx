@@ -21,7 +21,7 @@ export default function SunScene() {
             polar={[-Math.PI / 4, Math.PI / 4]}
             rotation={[0, 0, 0]}
             speed={1.5}
-            snap={true}
+            snap={true} // Ensure snap is a boolean
           >
             <ambientLight intensity={0.5} />
             <pointLight position={[10, 10, 10]} />
