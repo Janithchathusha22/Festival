@@ -1,8 +1,7 @@
 "use client"
 
 import type React from "react"
-
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Calendar } from "@/components/ui/calendar"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -10,22 +9,105 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
 import { zodiacSigns } from "@/lib/zodiac-data"
+import { Loader2 } from "lucide-react"
+
+// Define the type for auspicious times
+interface AuspiciousTime {
+  activity: string;
+  sinhalaName: string;
+  time: string;
+  description: string;
+}
 
 export default function NekathPage() {
   const [date, setDate] = useState<Date | undefined>(new Date())
   const [birthDate, setBirthDate] = useState<string>("")
   const [selectedZodiac, setSelectedZodiac] = useState<string | null>(null)
+  const [auspiciousTimes, setAuspiciousTimes] = useState<AuspiciousTime[]>([])
+  const [loading, setLoading] = useState<boolean>(true)
 
-  // Mock auspicious times for demonstration
-  const auspiciousTimes = {
-    "New Year Begins": "April 14, 2025 at 2:43 PM",
-    "Fire Lighting": "April 14, 2025 at 6:17 PM",
-    "Cooking First Meal": "April 14, 2025 at 7:05 PM",
-    "First Meal": "April 15, 2025 at 7:40 AM",
-    "Work Commencement": "April 15, 2025 at 8:12 AM",
-    "Anointing Oil": "April 16, 2025 at 10:35 AM",
-    "First Transaction": "April 15, 2025 at 11:20 AM",
-  }
+  // Fetch auspicious times data
+  useEffect(() => {
+    const fetchAuspiciousTimes = async () => {
+      setLoading(true)
+      try {
+        // In a real app, you would fetch from an actual API
+        // For now, we'll simulate an API call with a timeout
+        setTimeout(() => {
+          const mockApiData: AuspiciousTime[] = [
+            {
+              activity: "New Year Begins",
+              sinhalaName: "අලුත් අවුරුදු උදාව",
+              time: "April 14, 2025 at 2:43 PM",
+              description: "The auspicious time when the sun moves from Pisces to Aries, marking the beginning of the Sinhala and Tamil New Year."
+            },
+            {
+              activity: "Fire Lighting",
+              sinhalaName: "ලිප් ගිනි තැබීම",
+              time: "April 14, 2025 at 6:17 PM",
+              description: "The auspicious time to light the hearth for the first time in the New Year, symbolizing prosperity and abundance."
+            },
+            {
+              activity: "Cooking First Meal",
+              sinhalaName: "අලුත් සහල් උයන්න",
+              time: "April 14, 2025 at 7:05 PM",
+              description: "The auspicious time to cook the first meal of the New Year, typically milk rice (kiribath)."
+            },
+            {
+              activity: "First Meal",
+              sinhalaName: "ආහාර අනුභවය",
+              time: "April 15, 2025 at 7:40 AM",
+              description: "The auspicious time to eat the first meal of the New Year, usually facing a specific direction determined by astrologers."
+            },
+            {
+              activity: "Work Commencement",
+              sinhalaName: "වැඩ ඇල්ලීම",
+              time: "April 15, 2025 at 8:12 AM",
+              description: "The auspicious time to begin work for the New Year, symbolizing prosperity in one's profession or business."
+            },
+            {
+              activity: "Anointing Oil",
+              sinhalaName: "හිසතෙල් ගෑම",
+              time: "April 16, 2025 at 10:35 AM",
+              description: "The auspicious time for the oil-anointing ceremony, which is believed to promote good health throughout the year."
+            },
+            {
+              activity: "First Transaction",
+              sinhalaName: "ගනුදෙනු කිරීම",
+              time: "April 15, 2025 at 11:20 AM",
+              description: "The auspicious time to engage in the first monetary transaction of the New Year, believed to bring financial prosperity."
+            },
+            {
+              activity: "Leaving for Work",
+              sinhalaName: "පිටත්ව යාම",
+              time: "April 15, 2025 at 9:30 AM",
+              description: "The auspicious time to leave home for work or travel in the New Year."
+            },
+            {
+              activity: "Planting Trees",
+              sinhalaName: "ගස් සිටුවීම",
+              time: "April 15, 2025 at 3:15 PM",
+              description: "The auspicious time to plant trees or begin agricultural activities in the New Year."
+            },
+            {
+              activity: "Exchange of Gifts",
+              sinhalaName: "තෑගි හුවමාරුව",
+              time: "April 15, 2025 at 4:45 PM",
+              description: "The auspicious time to exchange gifts with family members and loved ones."
+            }
+          ];
+          
+          setAuspiciousTimes(mockApiData);
+          setLoading(false);
+        }, 1000);
+      } catch (error) {
+        console.error("Error fetching auspicious times:", error);
+        setLoading(false);
+      }
+    };
+
+    fetchAuspiciousTimes();
+  }, []);
 
   // Get zodiac sign based on birth date
   const getZodiacSign = (dateString: string) => {
@@ -90,29 +172,48 @@ export default function NekathPage() {
           <TabsContent value="auspicious-times" className="mt-6">
             <Card className="bg-white border-amber-200">
               <CardHeader className="bg-amber-100 border-b border-amber-200">
-                <CardTitle className="text-2xl text-amber-800">New Year Auspicious Times</CardTitle>
+                <CardTitle className="text-2xl text-amber-800">New Year Auspicious Times (නැකත්)</CardTitle>
               </CardHeader>
               <CardContent className="p-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {Object.entries(auspiciousTimes).map(([activity, time]) => (
-                    <div key={activity} className="flex items-start space-x-4 p-4 bg-amber-50 rounded-lg">
-                      <div className="w-3 h-3 rounded-full bg-amber-600 mt-2"></div>
-                      <div>
-                        <h3 className="font-bold text-amber-800">{activity}</h3>
-                        <p className="text-gray-700">{time}</p>
-                      </div>
+                {loading ? (
+                  <div className="flex justify-center items-center py-12">
+                    <Loader2 className="h-8 w-8 animate-spin text-amber-600" />
+                    <span className="ml-2 text-amber-800">Loading auspicious times...</span>
+                  </div>
+                ) : (
+                  <>
+                    <div className="grid grid-cols-1 gap-6">
+                      {auspiciousTimes.map((item) => (
+                        <div key={item.activity} className="flex flex-col p-4 bg-amber-50 rounded-lg border border-amber-200">
+                          <div className="flex items-start">
+                            <div className="w-3 h-3 rounded-full bg-amber-600 mt-2 mr-3"></div>
+                            <div className="flex-1">
+                              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center">
+                                <h3 className="font-bold text-amber-800 text-lg">{item.activity}</h3>
+                                <p className="text-amber-700 font-medium">{item.time}</p>
+                              </div>
+                              <h4 className="text-amber-600 font-medium mt-1">{item.sinhalaName}</h4>
+                              <p className="text-gray-700 mt-2">{item.description}</p>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
                     </div>
-                  ))}
-                </div>
 
-                <div className="mt-8 p-4 bg-amber-100 rounded-lg">
-                  <h3 className="font-bold text-amber-800 mb-2">About Nekath Times</h3>
-                  <p className="text-gray-700">
-                    Nekath times are determined by astrologers based on planetary positions and are considered
-                    auspicious moments to begin important activities. Following these times is believed to bring
-                    prosperity and good fortune for the coming year.
-                  </p>
-                </div>
+                    <div className="mt-8 p-4 bg-amber-100 rounded-lg">
+                      <h3 className="font-bold text-amber-800 mb-2">About Nekath Times (නැකත් වේලාවන් ගැන)</h3>
+                      <p className="text-gray-700">
+                        Nekath times are determined by astrologers based on planetary positions and are considered
+                        auspicious moments to begin important activities. Following these times is believed to bring
+                        prosperity and good fortune for the coming year.
+                      </p>
+                      <p className="text-gray-700 mt-2">
+                        The Sinhala and Tamil New Year marks the sun's transit from Pisces to Aries. The specific times for 
+                        various activities are calculated by astrologers based on astronomical observations and ancient traditions.
+                      </p>
+                    </div>
+                  </>
+                )}
               </CardContent>
             </Card>
           </TabsContent>

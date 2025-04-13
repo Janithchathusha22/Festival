@@ -1,20 +1,18 @@
 "use client"
 
 import { useEffect, useRef } from "react"
-import Image from "next/image"
+// Remove Image import
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { Card, CardContent } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+// Update imports to include more icons
+import { Calendar, Gift, Home, Sun, Moon, Star, Music, Heart, Book, Users, Flame, Utensils, Droplets as Oil, PartyPopper, Sparkle as Sparkles, Paintbrush } from "lucide-react"
 
 // Register ScrollTrigger plugin
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger)
 }
-
-// At the top of the file, after other imports
-// Remove this line
-// import festivalImg from "../../public/images/festival.jpg"
 
 export default function FestivalCulture() {
   const timelineRef = useRef<HTMLDivElement>(null)
@@ -41,17 +39,10 @@ export default function FestivalCulture() {
   return (
     <div className="bg-amber-50 min-h-screen">
       {/* Hero Section */}
-      <div className="relative h-96 bg-amber-800">
-        <div className="absolute inset-0 bg-gradient-to-r from-amber-900/70 to-amber-800/70 z-10" />
-        <Image
-          src="https://images.unsplash.com/photo-1623069923731-0d6c4f1c2c46?q=80&w=1374"
-          alt="Sri Lankan New Year Celebration"
-          fill
-          className="object-cover"
-          priority
-          sizes="100vw"
-        />
-        <div className="relative z-20 container mx-auto px-4 h-full flex flex-col justify-center items-center text-center">
+      <div className="relative h-96 bg-gradient-to-r from-amber-800 to-amber-600 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-amber-900/70 to-amber-800/70" />
+        <div className="relative container mx-auto px-4 h-full flex flex-col justify-center items-center text-center">
+          <Calendar className="w-16 h-16 text-white mb-6" />
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Festival & Culture</h1>
           <p className="text-xl text-amber-100 max-w-2xl">
             Discover the rich traditions and cultural significance of the Sinhala and Tamil New Year celebrations in Sri
@@ -64,6 +55,7 @@ export default function FestivalCulture() {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-12">
+            <Sun className="w-12 h-12 text-amber-600 mx-auto mb-4" />
             <h2 className="text-3xl font-bold text-amber-800 mb-6">The New Year Festival</h2>
             <p className="text-lg text-gray-700">
               The Sinhala and Tamil New Year, celebrated in mid-April, marks the end of the harvest season and the
@@ -73,13 +65,9 @@ export default function FestivalCulture() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="relative h-80 rounded-lg overflow-hidden shadow-xl">
-              <Image
-                src="/images/sinhala-tamil-new-year.jpg" // Update with the local path
-                alt="New Year Celebration"
-                fill
-                className="object-cover"
-              />
+            {/* Replace Image with icon */}
+            <div className="relative h-80 rounded-lg overflow-hidden shadow-xl bg-amber-100 flex items-center justify-center">
+              <PartyPopper className="w-32 h-32 text-amber-600" />
             </div>
             <div>
               <h3 className="text-2xl font-bold text-amber-800 mb-4">A Time of Renewal</h3>
@@ -109,6 +97,7 @@ export default function FestivalCulture() {
 
             {/* Timeline items */}
             <div className="space-y-12">
+              {/* Cleaning the House */}
               <div className="timeline-item flex flex-col md:flex-row items-center">
                 <div className="md:w-1/2 md:pr-12 md:text-right mb-4 md:mb-0">
                   <h3 className="text-xl font-bold text-amber-800">Cleaning the House</h3>
@@ -117,16 +106,17 @@ export default function FestivalCulture() {
                   </p>
                 </div>
                 <div className="md:w-1/2 md:pl-12 hidden md:block">
-                  <div className="w-16 h-16 rounded-full bg-amber-600 flex items-center justify-center mx-auto shadow-lg">
-                    <span className="text-white font-bold">1</span>
+                  <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center mx-auto shadow-lg">
+                    <Home className="w-8 h-8 text-amber-600" />
                   </div>
                 </div>
               </div>
 
+              {/* Lighting the Hearth */}
               <div className="timeline-item flex flex-col md:flex-row items-center">
                 <div className="md:w-1/2 md:pr-12 hidden md:block">
-                  <div className="w-16 h-16 rounded-full bg-amber-600 flex items-center justify-center mx-auto shadow-lg">
-                    <span className="text-white font-bold">2</span>
+                  <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center mx-auto shadow-lg">
+                    <Flame className="w-8 h-8 text-amber-600" />
                   </div>
                 </div>
                 <div className="md:w-1/2 md:pl-12 mb-4 md:mb-0">
@@ -138,6 +128,7 @@ export default function FestivalCulture() {
                 </div>
               </div>
 
+              {/* First Meal */}
               <div className="timeline-item flex flex-col md:flex-row items-center">
                 <div className="md:w-1/2 md:pr-12 md:text-right mb-4 md:mb-0">
                   <h3 className="text-xl font-bold text-amber-800">First Meal of the Year</h3>
@@ -147,16 +138,17 @@ export default function FestivalCulture() {
                   </p>
                 </div>
                 <div className="md:w-1/2 md:pl-12 hidden md:block">
-                  <div className="w-16 h-16 rounded-full bg-amber-600 flex items-center justify-center mx-auto shadow-lg">
-                    <span className="text-white font-bold">3</span>
+                  <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center mx-auto shadow-lg">
+                    <Utensils className="w-8 h-8 text-amber-600" />
                   </div>
                 </div>
               </div>
 
+              {/* Anointing Oil */}
               <div className="timeline-item flex flex-col md:flex-row items-center">
                 <div className="md:w-1/2 md:pr-12 hidden md:block">
-                  <div className="w-16 h-16 rounded-full bg-amber-600 flex items-center justify-center mx-auto shadow-lg">
-                    <span className="text-white font-bold">4</span>
+                  <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center mx-auto shadow-lg">
+                    <Oil className="w-8 h-8 text-amber-600" />
                   </div>
                 </div>
                 <div className="md:w-1/2 md:pl-12 mb-4 md:mb-0">
@@ -167,6 +159,7 @@ export default function FestivalCulture() {
                 </div>
               </div>
 
+              {/* Exchanging Gifts */}
               <div className="timeline-item flex flex-col md:flex-row items-center">
                 <div className="md:w-1/2 md:pr-12 md:text-right mb-4 md:mb-0">
                   <h3 className="text-xl font-bold text-amber-800">Exchanging Gifts</h3>
@@ -175,8 +168,8 @@ export default function FestivalCulture() {
                   </p>
                 </div>
                 <div className="md:w-1/2 md:pl-12 hidden md:block">
-                  <div className="w-16 h-16 rounded-full bg-amber-600 flex items-center justify-center mx-auto shadow-lg">
-                    <span className="text-white font-bold">5</span>
+                  <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center mx-auto shadow-lg">
+                    <Gift className="w-8 h-8 text-amber-600" />
                   </div>
                 </div>
               </div>
@@ -208,8 +201,9 @@ export default function FestivalCulture() {
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
                 <Card className="bg-white">
-                  <CardContent className="p-4">
-                    <h4 className="font-bold text-amber-800 mb-2">Key Rituals</h4>
+                  <CardContent className="p-4 flex flex-col items-center">
+                    <Utensils className="w-16 h-16 text-amber-600 my-4" />
+                    <h4 className="font-bold text-amber-800 mb-2 text-center">Key Rituals</h4>
                     <ul className="list-disc pl-5 text-gray-700 space-y-1">
                       <li>Lighting the hearth at auspicious time</li>
                       <li>Boiling milk in a new earthen pot</li>
@@ -220,8 +214,9 @@ export default function FestivalCulture() {
                   </CardContent>
                 </Card>
                 <Card className="bg-white">
-                  <CardContent className="p-4">
-                    <h4 className="font-bold text-amber-800 mb-2">Traditional Games</h4>
+                  <CardContent className="p-4 flex flex-col items-center">
+                    <Users className="w-16 h-16 text-amber-600 my-4" />
+                    <h4 className="font-bold text-amber-800 mb-2 text-center">Traditional Games</h4>
                     <ul className="list-disc pl-5 text-gray-700 space-y-1">
                       <li>Olinda Keliya (olinda board game)</li>
                       <li>Kana Mutti Bideema (pot breaking)</li>
@@ -242,8 +237,9 @@ export default function FestivalCulture() {
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
                 <Card className="bg-white">
-                  <CardContent className="p-4">
-                    <h4 className="font-bold text-amber-800 mb-2">Key Rituals</h4>
+                  <CardContent className="p-4 flex flex-col items-center">
+                    <Sparkles className="w-16 h-16 text-amber-600 my-4" />
+                    <h4 className="font-bold text-amber-800 mb-2 text-center">Key Rituals</h4>
                     <ul className="list-disc pl-5 text-gray-700 space-y-1">
                       <li>Kanni (viewing auspicious items first thing in the morning)</li>
                       <li>Preparing Maanga Pachadi (a special dish with six flavors)</li>
@@ -254,8 +250,9 @@ export default function FestivalCulture() {
                   </CardContent>
                 </Card>
                 <Card className="bg-white">
-                  <CardContent className="p-4">
-                    <h4 className="font-bold text-amber-800 mb-2">Traditional Customs</h4>
+                  <CardContent className="p-4 flex flex-col items-center">
+                    <Paintbrush className="w-16 h-16 text-amber-600 my-4" />
+                    <h4 className="font-bold text-amber-800 mb-2 text-center">Traditional Customs</h4>
                     <ul className="list-disc pl-5 text-gray-700 space-y-1">
                       <li>Drawing kolam (decorative patterns) at the entrance</li>
                       <li>Reading Panchanga (almanac) for the new year</li>
@@ -271,103 +268,52 @@ export default function FestivalCulture() {
         </div>
       </section>
 
-      {/* Photo Gallery */}
+      {/* Photo Gallery - replaced with icon cards */}
       <section className="py-16 bg-amber-50">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center text-amber-800 mb-12">Celebrations Across Sri Lanka</h2>
 
-          {/* Hero Section */}
-          <Image
-            src="/images/hero.jpg"
-            alt="Sri Lankan New Year Celebration"
-            fill
-            className="object-cover"
-            priority
-            sizes="100vw"
-          />
-
-          {/* Introduction Section */}
-          <div className="relative h-80 rounded-lg overflow-hidden shadow-xl">
-            <Image
-              src="/images/new-year.jpg"
-              alt="New Year Celebration"
-              fill
-              className="object-cover"
-            />
-          </div>
-
-          {/* Photo Gallery Section */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="relative h-64 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow">
-              <Image
-                src="/images/sinhala-tamil.jpg"
-                alt="Sinhala Tamil New Year Celebration"
-                fill
-                className="object-cover"
-              />
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
-                <h3 className="text-white font-bold">Sinhala & Tamil New Year</h3>
-              </div>
+            {/* Sinhala & Tamil New Year Card */}
+            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all flex flex-col items-center">
+              <Calendar className="w-16 h-16 text-amber-600 mb-4" />
+              <h3 className="text-xl font-bold text-amber-800 text-center mb-3">Sinhala & Tamil New Year</h3>
+              <p className="text-gray-700 text-center">Annual cultural celebration marking the solar new year</p>
             </div>
 
-            <div className="relative h-64 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow">
-              <Image
-                src="/images/vesak.jpg"
-                alt="Vesak Celebrations with Lanterns"
-                fill
-                className="object-cover"
-              />
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
-                <h3 className="text-white font-bold">Vesak Celebrations</h3>
-              </div>
+            {/* Vesak Card */}
+            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all flex flex-col items-center">
+              <Star className="w-16 h-16 text-amber-600 mb-4" />
+              <h3 className="text-xl font-bold text-amber-800 text-center mb-3">Vesak Celebrations</h3>
+              <p className="text-gray-700 text-center">Buddhist festival celebrating the birth, enlightenment, and passing of Buddha</p>
             </div>
 
-            <div className="relative h-64 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow">
-              <Image
-                src="/images/perahera.jpg"
-                alt="Esala Perahera in Kandy"
-                fill
-                className="object-cover"
-              />
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
-                <h3 className="text-white font-bold">Esala Perahera (Kandy)</h3>
-              </div>
+            {/* Esala Perahera Card */}
+            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all flex flex-col items-center">
+              <Users className="w-16 h-16 text-amber-600 mb-4" />
+              <h3 className="text-xl font-bold text-amber-800 text-center mb-3">Esala Perahera</h3>
+              <p className="text-gray-700 text-center">Grand cultural pageant in Kandy featuring traditional dancers and elephants</p>
             </div>
 
-            <div className="relative h-64 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow">
-              <Image
-                src="/images/independence.jpg"
-                alt="Sri Lanka Independence Day Celebration"
-                fill
-                className="object-cover"
-              />
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
-                <h3 className="text-white font-bold">Independence Day</h3>
-              </div>
+            {/* Independence Day Card */}
+            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all flex flex-col items-center">
+              <Sun className="w-16 h-16 text-amber-600 mb-4" />
+              <h3 className="text-xl font-bold text-amber-800 text-center mb-3">Independence Day</h3>
+              <p className="text-gray-700 text-center">National celebration of Sri Lanka's independence</p>
             </div>
 
-            <div className="relative h-64 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow">
-              <Image
-                src="/images/christmas.jpg"
-                alt="Christmas Celebrations in Sri Lanka"
-                fill
-                className="object-cover"
-              />
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
-                <h3 className="text-white font-bold">Christmas Celebrations</h3>
-              </div>
+            {/* Christmas Card */}
+            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all flex flex-col items-center">
+              <Gift className="w-16 h-16 text-amber-600 mb-4" />
+              <h3 className="text-xl font-bold text-amber-800 text-center mb-3">Christmas Celebrations</h3>
+              <p className="text-gray-700 text-center">Christian festival celebrated with unique Sri Lankan traditions</p>
             </div>
 
-            <div className="relative h-64 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow">
-              <Image
-                src="/images/deepavali.jpg"
-                alt="Deepavali Celebrations in Sri Lanka"
-                fill
-                className="object-cover"
-              />
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
-                <h3 className="text-white font-bold">Deepavali Celebrations</h3>
-              </div>
+            {/* Deepavali Card */}
+            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all flex flex-col items-center">
+              <Moon className="w-16 h-16 text-amber-600 mb-4" />
+              <h3 className="text-xl font-bold text-amber-800 text-center mb-3">Deepavali Celebrations</h3>
+              <p className="text-gray-700 text-center">Hindu festival of lights celebrated with oil lamps and sweets</p>
             </div>
           </div>
         </div>

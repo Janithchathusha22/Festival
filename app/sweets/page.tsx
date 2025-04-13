@@ -10,6 +10,24 @@ import { Input } from "@/components/ui/input"
 import SweetModel from "@/components/sweets/sweet-model"
 
 // Traditional sweets data
+// At the top of the file, add this import
+import kokisImage from "../kokis.png"
+
+// Add this import near the top of the file
+import keumImage from "../keum4.jpg"
+
+// Add this import with the other image imports
+import kiribathImage from "../kiribath.jpg"
+
+// Add this import with other image imports
+import aluwaImage from "../aluwa2.jpg"
+
+// Add this import with other image imports
+import mungKavumImage from "../mukeum.jpg"
+
+// Add this import with other image imports
+import asmiImage from "../asmi2.jpg"
+
 const traditionalSweets = [
   {
     id: "kokkis",
@@ -32,7 +50,7 @@ const traditionalSweets = [
       "Remove from oil and drain on paper towels.",
       "Allow to cool before serving.",
     ],
-    image: "/placeholder.svg?height=400&width=600&text=Kokkis",
+    image: kokisImage,
     has3D: true,
   },
   {
@@ -56,7 +74,7 @@ const traditionalSweets = [
       "Remove from oil and drain on paper towels.",
       "Allow to cool before serving.",
     ],
-    image: "/placeholder.svg?height=400&width=600&text=Kavum",
+    image: keumImage,
     has3D: false,
   },
   {
@@ -75,7 +93,7 @@ const traditionalSweets = [
       "Allow to cool slightly, then cut into diamond-shaped pieces.",
       "Serve with lunu miris (onion sambol) or jaggery.",
     ],
-    image: "/placeholder.svg?height=400&width=600&text=Kiribath",
+    image: kiribathImage,
     has3D: false,
   },
   {
@@ -98,7 +116,7 @@ const traditionalSweets = [
       "Allow it to cool and set for a few hours.",
       "Cut into squares or diamond shapes before serving.",
     ],
-    image: "/placeholder.svg?height=400&width=600&text=Aluwa",
+    image: aluwaImage,
     has3D: false,
   },
   {
@@ -123,7 +141,7 @@ const traditionalSweets = [
       "Deep fry until golden brown.",
       "Remove from oil and drain on paper towels.",
     ],
-    image: "/placeholder.svg?height=400&width=600&text=Mung Kavum",
+    image: mungKavumImage,
     has3D: false,
   },
   {
@@ -145,7 +163,7 @@ const traditionalSweets = [
       "Form the mixture into small balls.",
       "Allow to cool and set before serving.",
     ],
-    image: "/placeholder.svg?height=400&width=600&text=Asmi",
+    image: asmiImage,
     has3D: false,
   },
 ]
