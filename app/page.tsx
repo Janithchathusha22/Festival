@@ -8,13 +8,11 @@ import { Card, CardContent } from "@/components/ui/card"
 import { gsap } from "gsap"
 import CountdownTimer from "@/components/countdown-timer"
 import FirecrackerAnimation from "@/components/firecracker-animation"
-import SunScene from "@/components/sun-scene"
-// Add this import at the top
 import newYearImage from './gm.jpg'
-// Add these imports at the top with other imports
 import nekathImage from './a.jpg'
 import kridaImage from './krida.jpg'
 import sweetsImage from './kemabima.jpg'
+ // Ensure this import is correct
 
 export default function Home() {
   const [showFireworks, setShowFireworks] = useState(false)
@@ -69,7 +67,7 @@ export default function Home() {
             Aries marks the beginning of the Sinhala and Tamil New Year, symbolizing renewal and prosperity.
           </p>
           <div className="max-w-2xl mx-auto bg-gradient-to-b from-amber-50/50 to-amber-100/50 p-4 rounded-lg">
-            <SunScene />
+            {/* Removed SunScene component */}
           </div>
         </div>
       </section>

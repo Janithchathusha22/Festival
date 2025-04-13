@@ -7,7 +7,12 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Button } from "@/components/ui/button"
 import { Search, Share2 } from "lucide-react"
 import { Input } from "@/components/ui/input"
-import SweetModel from "@/components/sweets/sweet-model"
+import dynamic from 'next/dynamic'
+
+const SweetModel = dynamic(() => import('@/components/sweets/sweet-model'), {
+  ssr: false,
+  loading: () => <div className="h-80 bg-amber-100 animate-pulse rounded-lg" />
+})
 
 // Traditional sweets data
 // At the top of the file, add this import
@@ -24,9 +29,8 @@ import aluwaImage from "../aluwa2.jpg"
 
 // Add this import with other image imports
 import mungKavumImage from "../mukeum.jpg"
-
-// Add this import with other image imports
-import asmiImage from "../asmi2.jpg"
+// Update asmi image import
+import asmiImage from "../asmi9.jpg"
 
 const traditionalSweets = [
   {

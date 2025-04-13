@@ -5,7 +5,7 @@ import { PresentationControls, OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import dynamic from "next/dynamic";
 
-const SunModel = dynamic(() => import("@/components/sun-model"), { ssr: false });
+//const SunModel = dynamic(() => import("./sun-model"), { ssr: false });
 
 export default function SunScene() {
   return (
@@ -21,11 +21,11 @@ export default function SunScene() {
             polar={[-Math.PI / 4, Math.PI / 4]}
             rotation={[0, 0, 0]}
             speed={1.5}
-            snap={true} // Ensure snap is a boolean
+            snap={true}
           >
-            <ambientLight intensity={0.5} />
-            <pointLight position={[10, 10, 10]} />
-            <SunModel />
+            {/* <ambientLight intensity={0.5} />
+            <pointLight position={[10, 10, 10]} /> */}
+           {/* // <SunModel /> */}
           </PresentationControls>
           <OrbitControls enableZoom={false} />
         </Suspense>
